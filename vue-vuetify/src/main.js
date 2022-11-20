@@ -11,5 +11,8 @@ Vue.use(VueRouter);
 new Vue({
   vuetify,
   router,
+  data: ({
+    authentificator: false
+  }),
   render: h => h(App)
 }).$mount('#app')

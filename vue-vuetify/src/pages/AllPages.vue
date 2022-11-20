@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-  <header-cite/>
   div(class="container elements") 
       v-sheet(v-for="fetchElement in fetchElements" class="elements__inner" @click="$router.push({path:`/pages/${fetchElement.id}`})")
           h2 {{ fetchElement.name }}
@@ -10,15 +9,18 @@ div
 
 <script>
 
-import HeaderCite from '@/components/HeaderSite.vue'
 
 export default {
-    components: {
-    HeaderCite
+
+  props: {
+    isAuth: {
+      type: Boolean,
+      default: false
+    }
   },
     data: () => ({
         fetchElements:[],
-        // searchText: ''
+        searchText: ''
     }),
 
     async created() {
@@ -31,11 +33,13 @@ export default {
             console.log(e)
         }
     },
-    // methods: {
-    //     searchInfo() {
-    //         this.fetchElements.filter(element => element.includes(this.searchText))
-    //     }
-    // }
+    methods: {
+    searchInfo(searchText) {
+      console.log('dada')
+      this.fetchElements.filter(element => element.name.toLowerCase().includes(searchText.toLowerCase()))
+    }
+  }
+
 }
 </script>
 

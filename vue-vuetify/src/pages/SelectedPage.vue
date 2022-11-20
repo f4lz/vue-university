@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-  <header-cite/>
   div(class="elements")
     v-sheet(class="elements__inner" v-if="obj")
       h2 {{ obj.name }}
@@ -21,23 +20,27 @@ div
 
 <script>
 
-import HeaderCite from '@/components/HeaderSite.vue'
 
 
 export default {
-  components: {
-    HeaderCite
+
+
+  props: {
+    isAuth: {
+      type: Boolean,
+      default: false
+    }
   },
 
   data: () => ({
       comments: [
         {
           name: 'Igor',
-          text: 'super'
+          text: 'comment text'
         },
         {
           name: 'Vika',
-          text: 'ura'
+          text: 'comment text'
         }
       ],
       form: {
@@ -61,10 +64,12 @@ export default {
     },
     methods: {
       addComment() {
+        this.comments.reverse()
         this.comments.push({
           name: this.form.name,
           text: this.form.text
         })
+        this.comments.reverse()
       }
     }
 
@@ -87,10 +92,6 @@ export default {
 
 .comment__inner {
   padding: 20px 0 0 20px;
-}
-
-.comment__line {
-  border-bottom: 1px solid black;
 }
 
 </style>

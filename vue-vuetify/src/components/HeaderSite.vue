@@ -14,17 +14,17 @@
         <v-btn elevation="1" rounded color="white" depressed class="mr-3" light @click="$router.push({name:'gallery'})">
           Галерея
         </v-btn>
-        <v-btn elevation="1" rounded color="white" depressed class="normal" light  @click="$router.push({name:'login'})">
-          <span v-if="!auth">Войти</span> 
-          <div v-else>
+        <v-btn elevation="1" rounded color="white" depressed class="normal" light >
+          <span v-if="auth === false" @click="$router.push({name:'login'})">Войти</span> 
+          <div v-else @click="$root.authentificator = false">
           <span>Выйти</span> 
           <v-icon right>mdi-logout</v-icon> 
           </div>
         </v-btn>  
-        <v-btn v-if="auth" elevation="1" rounded color="white" depressed class="ml-3" light>
+        <v-btn v-if="auth === true" @click="$router.push({name:'profile'})" elevation="1" rounded color="white" depressed class="ml-3" light>
           <v-icon>person</v-icon>
         </v-btn>
-        <v-btn @click="isSearch = !isSearch; $emit('search')" icon v-model="searchText">
+        <v-btn @click="isSearch = !isSearch; $emit('search')" icon>
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
         <v-text-field v-if="isSearch" class="normaly input" dark type="text"></v-text-field>
@@ -40,20 +40,15 @@
     props: {
       auth: {
         type: Boolean,
-        // default: false
+        default: false
       },
 
     },
    
     data: () => ({
-      searchText:"",
       isSearch: false
     }),
-    
-    methods: {
-      openWindow() {
-      }
-    }
+  
   }
 
 

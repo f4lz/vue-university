@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-  <header-cite/>
   div(class="container elements") 
     h2(class="mb-3 text") Галерея
     v-sheet(v-for="fetchElement in fetchElements" class="elements__inner")
@@ -9,11 +8,14 @@ div
 
 <script>
 
-import HeaderCite from '@/components/HeaderSite.vue'
   
 export default {
-  components: {
-    HeaderCite
+
+  props: {
+    isAuth: {
+      type: Boolean,
+      default: false
+    }
   },
     data: () => ({
         fetchElements:[]

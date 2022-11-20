@@ -18,41 +18,58 @@ export default new VueRouter ({
     {
       path: '/',
       name: 'home',
-      component: MainPage
+      component: MainPage,
+      props: true,
     },
     {
       path: '/pages',
       name: 'pages',
+      props: true,
       component: AllPages,
+     
     },
     {
       path: '/pages/:id',
-      component: SelectedPage
+      props: true,
+      component: SelectedPage,
+
     },
     {
       path: '/register',
       name: 'register',
+      props: true,
       component: RegisterForm
     },
     {
       path: '/login',
       name: 'login',
+      props: true,
       component: LoginForm
     },
     {
       path: '/gallery',
       name: 'gallery',
+      props: true,
       component: GalleryPage
     },
     {
       path: '/profile',
       name: 'profile',
+      props: true,
       component: ProfilePage,
     },
     {
       path: '/edit',
       name: 'edit',
-      component: EditProfilePage
+      props: true,
+      component: EditProfilePage,
+      // beforeEnter: (to, from, next) => {
+      //   if (localStorage.getItem('auth')) {
+      //     next();
+      //   } else {
+      //     next({name: 'home'})
+      //   }
+      // }
     },
     {
       path: '*',

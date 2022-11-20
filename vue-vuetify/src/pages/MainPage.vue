@@ -1,6 +1,5 @@
 <template lang="pug">
 div(class="text-center")
-  <header-cite/>
   h1(class="text-uppercase") Рады видеть вас на нашем сайте
   a(@click="$router.push({name:'pages'})") Посмотреть все новости
   div(class="slider__wrapper")
@@ -13,15 +12,18 @@ div(class="text-center")
 </template>
 
 <script>
-import HeaderCite from '@/components/HeaderSite.vue'
 
 export default {
-  components: {
-    HeaderCite
+
+  props: {
+    isAuth: {
+      type: Boolean,
+      default: false
+    }
   },
   data: () => ({
     fetchElements:[],
-    i: 0
+    i: 0,
   }),
   async created() {
     try {

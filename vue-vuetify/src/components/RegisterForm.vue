@@ -1,6 +1,5 @@
 <template>
 <div>
-  <header-cite/>
   <v-container fluid fill-height>
     <v-layout justify-center>
         <v-flex xs12 sm8 md4>
@@ -48,10 +47,14 @@
   
 
 <script>
-import HeaderCite from '@/components/HeaderSite.vue'
+
 export default {
-  components: {
-    HeaderCite
+
+  props: {
+    isAuth: {
+      type: Boolean,
+      default: false
+    }
   },
   data: () => ({
     login: '',
@@ -69,9 +72,7 @@ export default {
       localStorage.setItem(`${this.login}`, personFormated)
       this.$router.push({name: 'login'})
     },
-    jopa() {
-      console.log('daadada');
-    }
+   
   }
 
 }

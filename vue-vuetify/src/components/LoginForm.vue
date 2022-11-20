@@ -1,6 +1,5 @@
 <template>
 <div>
-  <header-cite :auth="isAuth"/>
   <v-container fluid fill-height>
     <v-layout justify-center>
         <v-flex xs12 sm8 md4>
@@ -44,14 +43,10 @@
 </div>
 </template>
 
-
 <script>
-  import HeaderCite from '@/components/HeaderSite.vue'
 
 export default {
-  components: {
-    HeaderCite
-  },
+
   data: () => ({
     error: false,
     login: '',
@@ -67,7 +62,9 @@ export default {
           console.log('Успешно')
           this.isAuth = true;
           this.error = false;
-          // this.$router.push({name: 'home'})
+          this.$root.authentificator = this.isAuth
+          console.log(this.$root.authentificator)
+          this.$router.push({name: 'home'})
         } else {
           this.error = true;
         }
