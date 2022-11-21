@@ -15,12 +15,6 @@ div(class="text-center")
 
 export default {
 
-  props: {
-    isAuth: {
-      type: Boolean,
-      default: false
-    }
-  },
   data: () => ({
     fetchElements:[],
     i: 0,

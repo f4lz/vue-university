@@ -59,11 +59,13 @@ export default {
         const personFormated = localStorage.getItem(`${this.login}`);
         const person = JSON.parse(personFormated);
         if (this.login == person.login && this.password == person.password) {
-          console.log('Успешно')
+          localStorage.setItem('auth', true);
+          this.$root.login = person.login;
+          this.$root.email = person.email;
+          this.$root.password = person.password
           this.isAuth = true;
           this.error = false;
           this.$root.authentificator = this.isAuth
-          console.log(this.$root.authentificator)
           this.$router.push({name: 'home'})
         } else {
           this.error = true;

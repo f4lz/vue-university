@@ -12,12 +12,6 @@ div
 
 export default {
 
-  props: {
-    isAuth: {
-      type: Boolean,
-      default: false
-    }
-  },
     data: () => ({
         fetchElements:[],
         searchText: ''

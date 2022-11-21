@@ -16,7 +16,7 @@
         </v-btn>
         <v-btn elevation="1" rounded color="white" depressed class="normal" light >
           <span v-if="auth === false" @click="$router.push({name:'login'})">Войти</span> 
-          <div v-else @click="$root.authentificator = false">
+          <div v-else @click="$emit('logout')">
           <span>Выйти</span> 
           <v-icon right>mdi-logout</v-icon> 
           </div>
@@ -42,13 +42,10 @@
         type: Boolean,
         default: false
       },
-
     },
-   
     data: () => ({
       isSearch: false
     }),
-  
   }
 
 

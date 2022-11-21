@@ -8,7 +8,6 @@ div
       p {{ obj.desc }}
       div(class="comments")
         h2 Оставьте ваш комментарий 
-        <v-text-field label="Ваше имя" type="text" v-model="form.name"></v-text-field>
         <v-text-field label="Введите ваш комментарий" type="text" v-model="form.text"></v-text-field>
         <v-btn color="primary" x-large @click="addComment" class="comments__btn">Оставить комментарий</v-btn> 
       h3 Комментарии
@@ -23,14 +22,6 @@ div
 
 
 export default {
-
-
-  props: {
-    isAuth: {
-      type: Boolean,
-      default: false
-    }
-  },
 
   data: () => ({
       comments: [
@@ -64,12 +55,17 @@ export default {
     },
     methods: {
       addComment() {
-        this.comments.reverse()
-        this.comments.push({
-          name: this.form.name,
-          text: this.form.text
-        })
-        this.comments.reverse()
+        const authing = localStorage.getItem('auth')
+        if (authing) {
+          console.log('dadada')
+          this.comments.reverse()
+          this.comments.push({
+            name: this.$root.login,
+            text: this.form.text
+          })
+          this.comments.reverse()
+        }
+        
       }
     }
 

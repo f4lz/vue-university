@@ -12,7 +12,10 @@ new Vue({
   vuetify,
   router,
   data: ({
-    authentificator: false
+    authentificator: false,
+    login:'',
+    password:'',
+    email: '',
   }),
   render: h => h(App)
 }).$mount('#app')

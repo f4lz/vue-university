@@ -1,7 +1,7 @@
 <template lang="pug">
 div
-  h2 Имя пользователя
-  p Почта
+  h2 {{ $root.login }}
+  p {{ $root.email }}
   <router-link :to="{name: 'edit'}"> Редактировать профиль</router-link>
 </template>
 
@@ -9,11 +9,5 @@ div
 
 export default {
 
-  props: {
-    isAuth: {
-      type: Boolean,
-      default: false
-    }
-  },
 }
 </script>

@@ -57,19 +57,26 @@ export default new VueRouter ({
       name: 'profile',
       props: true,
       component: ProfilePage,
+      beforeEnter: (to, from, next) => {
+        if (localStorage.getItem('auth')) {
+          next();
+        } else {
+          next({name: 'home'})
+        }
+      }
     },
     {
       path: '/edit',
       name: 'edit',
       props: true,
       component: EditProfilePage,
-      // beforeEnter: (to, from, next) => {
-      //   if (localStorage.getItem('auth')) {
-      //     next();
-      //   } else {
-      //     next({name: 'home'})
-      //   }
-      // }
+      beforeEnter: (to, from, next) => {
+        if (localStorage.getItem('auth')) {
+          next();
+        } else {
+          next({name: 'home'})
+        }
+      }
     },
     {
       path: '*',

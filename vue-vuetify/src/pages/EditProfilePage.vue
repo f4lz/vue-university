@@ -1,17 +1,12 @@
 <template lang="pug">
 div
-  h2 Жопа  
+  h2 Редактировать пароль
+  h2 Редактировать имя
 </template>
 
 <script>
 
 export default {
 
-  props: {
-    isAuth: {
-      type: Boolean,
-      default: false
-    }
-  },
 }
 </script>
