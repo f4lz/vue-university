@@ -24,10 +24,10 @@
         <v-btn v-if="auth === true" @click="$router.push({name:'profile'})" elevation="1" rounded color="white" depressed class="ml-3" light>
           <v-icon>person</v-icon>
         </v-btn>
-        <v-btn @click="isSearch = !isSearch; $emit('search')" icon>
+        <v-btn @click="searchInformation" icon>
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
-        <v-text-field v-if="isSearch" class="normaly input" dark type="text"></v-text-field>
+        <v-text-field v-if="isSearch" class="normaly input" dark type="text" v-model="searchText"></v-text-field>
   </v-app-bar>
       <v-sheet id="scrolling-techniques-8" class="overflow-y-auto" max-height="600">
         
@@ -44,8 +44,20 @@
       },
     },
     data: () => ({
+      searchText: '',
       isSearch: false
     }),
+    methods: {
+      searchInformation () {
+        this.isSearch = !this.isSearch
+        this.$root.text = this.searchText
+        // this.$emit('search')
+        if (this.$route.path !== '/pages') {
+          this.$router.push({name: 'pages'})
+        }
+        
+      }
+    }
   }
 
 

@@ -14,7 +14,6 @@ export default {
 
     data: () => ({
         fetchElements:[],
-        searchText: ''
     }),
 
     async created() {
@@ -22,17 +21,19 @@ export default {
             await fetch('/api/articles.json')
                 .then(response => response.json())
                 .then(data => this.fetchElements = data);
+                this.fetchElements.filter(element => element.name.toLowerCase().includes(this.$root.text.toLowerCase()))
+                console.log(this.fetchElements)
             
         } catch(e) {
             console.log(e)
         }
+        
     },
-    methods: {
-    searchInfo(searchText) {
-      console.log('dada')
-      this.fetchElements.filter(element => element.name.toLowerCase().includes(searchText.toLowerCase()))
-    }
-  }
+//     computed: {
+//     searchInfo() {
+//       return this.fetchElements.filter(element => element.name.toLowerCase().includes(this.$root.text.toLowerCase()))
+//     }
+//   }
 
 }
 </script>

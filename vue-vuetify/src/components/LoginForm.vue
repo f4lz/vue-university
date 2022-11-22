@@ -28,7 +28,7 @@
                       Проверьте пожалуйста данные и повторите ввод
                     </div>
                     <div class="reg__link mt-4">
-                    <a id="link" @click="$router.push({name:'register'})">Регистрация</a> 
+                    <a id="link" @click="$router.push({name:'register'})" class="pink--text">Регистрация</a> 
                     </div>
                 </v-form>
               </v-card-text>

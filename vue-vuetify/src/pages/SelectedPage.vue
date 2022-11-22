@@ -9,7 +9,8 @@ div
       div(class="comments")
         h2 Оставьте ваш комментарий 
         <v-text-field label="Введите ваш комментарий" type="text" v-model="form.text"></v-text-field>
-        <v-btn color="primary" x-large @click="addComment" class="comments__btn">Оставить комментарий</v-btn> 
+        <v-btn color="primary" x-large @click="addComment" class="comments__btn">Оставить комментарий</v-btn>
+        p(v-if="error" class="red--text pt-3") Пожалуйста введите текст комментария
       h3 Комментарии
       div(class="comments__wrapper")
         div(v-for="(comment, index) in comments" :key="index" class="comment__inner") 
@@ -39,7 +40,8 @@ export default {
         text: ''
       },
       fetchElements:[],
-      obj: null
+      obj: null,
+      error: false
   }),
 
   async mounted() {
@@ -56,16 +58,20 @@ export default {
     methods: {
       addComment() {
         const authing = localStorage.getItem('auth')
-        if (authing) {
-          console.log('dadada')
+        if (authing && this.form.text != '') {
           this.comments.reverse()
           this.comments.push({
             name: this.$root.login,
             text: this.form.text
           })
           this.comments.reverse()
+          this.error = false
+        } else if (authing == null) {
+          this.$router.push({name: 'login'})
         }
-        
+        if (this.form.text == '') {
+          this.error = true
+        }
       }
     }
 

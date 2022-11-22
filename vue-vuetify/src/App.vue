@@ -19,8 +19,9 @@ export default {
   },
 
   data: () => ({
-
+    
   }),
+  
   methods: {
     logoutOfProfile: function() {
       localStorage.removeItem('auth')
@@ -28,6 +29,7 @@ export default {
       this.$root.email = null
       this.$root.login = null
       this.$root.password = null
+      
     }
   }
 

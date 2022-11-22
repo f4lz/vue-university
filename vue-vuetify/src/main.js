@@ -16,6 +16,7 @@ new Vue({
     login:'',
     password:'',
     email: '',
+    text: ''
   }),
   render: h => h(App)
 }).$mount('#app')
